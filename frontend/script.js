@@ -26,62 +26,35 @@ const API = "http://localhost:3000/api/tenis";
 //============================================
 
 async function buscarTenis(url) {
-    //adiciona a classe "loading"
-    //normalmente usada para mostrar animação de carregamento
     dogArea.classList.add("loading");
 
     try {
-        //faz a requisição HTTP para a API
         const response = await fetch(url);
-        // converte a resposta para JSON
         const data = await response.json();
-        //mostra no console a resposta da API
         console.log("Resposta da API:", data);
 
-        // Vamos verificar se a resposta da API retornou erro
-        if (data.status === "error") {
-            //breedName - Elemento HTML
-            //.textContent - Propriedade que define o conteúdo de texto do elemento
-            //data.message - mensagem de erro enviada pela API
-            breedName.textContent = data.message;
-            // Remove a imagem
+        // MODIFICAÇÃO AQUI: Verifica se o status é 404 ou se retornou erro
+        if (response.status === 404 || data.status === "error") {
+            // Exibe a caixa de alerta na tela
+            alert("Erro 404: Marca de tênis não encontrada!");
+
+            breedName.textContent = "Erro 404: Marca não encontrada";
             dogImage.src = "";
-            // encerra a função aqui, não há foto para mostrar
             return;
         }
 
-        //coloca a imagem do cachorro na tela
-        // o src define qual imagem será exibida
-        // a API devolve a URL completa no campo "url"
         dogImage.src = data.url;
 
-        //extrai o nome da raça do campo "foto"
-        // exemplo: "nike/1.jpg"
-        // separa em partes usando "/" e pega a primeira posição
         const raca = data.foto.split("/")[0];
-
-        //coloca a primeira letra maiúscula
-        // ex: nike --> Nike
-        // raca.charAt(0) - pega a primeira letra
-        // toUpperCase() - transforma em maiúscula
-        // raca.slice(1) - pega o texto a partir da segunda letra
         breedName.textContent =
             raca.charAt(0).toUpperCase() + raca.slice(1);
 
     } catch (erro) {
-        //caso o servidor esteja desligado
-        // ou aconteça algum erro na requisição
         console.error(erro);
-
-        //mostra a mensagem na tela
         breedName.textContent =
             "📴 Servidor offline - rode: node server.js";
-
-        //remove a imagem
         dogImage.src = "";
     } finally {
-        //remove a classe de carregamento
-        //independentemente de erro ou sucesso
         dogArea.classList.remove("loading");
     }
 }
