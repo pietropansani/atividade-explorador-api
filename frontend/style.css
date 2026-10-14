@@ -1,0 +1,454 @@
+/*
+=====================================
+ESTILIZAÇÃO DA PÁGINA
+CSS responsável pelo layout da aplicação
+Paleta: preto, cinza e branco
+=====================================
+*/
+
+
+/* variáveis de cor: mude aqui para alterar a paleta inteira */
+:root {
+
+    /* tons de preto */
+    --black: #0a0a0a;
+    --black-soft: #141414;
+
+    /* tons de cinza */
+    --gray-900: #1c1c1e;
+    --gray-800: #2a2a2d;
+    --gray-600: #4f4c51;
+    --gray-400: #9a979c;
+    --gray-200: #e4e4e6;
+    --gray-100: #f2f2f3;
+
+    /* branco */
+    --white: #ffffff;
+}
+
+
+/*
+* seleciona TODOS os elementos da página
+usado normalmente para resetar estilos padrão do navegador
+*/
+* {
+
+    /* remove margens padrão */
+    margin: 0;
+
+    /* remove espaçamento interno padrão */
+    padding: 0;
+
+    /* faz o cálculo do tamanho incluir padding e borda */
+    box-sizing: border-box;
+}
+
+
+body {
+
+    /* define a fonte do site */
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+
+    /* fundo em degradê do preto ao cinza escuro */
+    background: linear-gradient(135deg, var(--black) 0%, var(--gray-900) 50%, var(--gray-600) 100%);
+
+    /* mantém o degradê fixo ao rolar a página */
+    background-attachment: fixed;
+
+    /* altura mínima da tela = 100% da viewport */
+    min-height: 100vh;
+
+    /* ativa o Flexbox */
+    display: flex;
+
+    /* centraliza horizontalmente */
+    justify-content: center;
+
+    /* centraliza verticalmente */
+    align-items: center;
+
+    /* espaçamento interno nas bordas da tela */
+    padding: 20px;
+
+    /* cor padrão do texto */
+    color: var(--white);
+}
+
+
+.container {
+
+    /* largura máxima do conteúdo */
+    max-width: 800px;
+
+    /* ocupa 100% até chegar no limite */
+    width: 100%;
+
+    /* fundo cinza escuro */
+    background: var(--gray-900);
+
+    /* borda sutil para destacar o card do fundo */
+    border: 1px solid var(--gray-800);
+
+    /* espaço interno */
+    padding: 36px;
+
+    /* arredonda os cantos */
+    border-radius: 24px;
+
+    /* sombra do card, mais profunda e suave */
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+
+h1 {
+
+    /* centraliza o título */
+    text-align: center;
+
+    /* espaço abaixo do título */
+    margin-bottom: 10px;
+
+    /* cor branca */
+    color: var(--white);
+
+    /* título mais forte */
+    font-weight: 800;
+
+    /* espaçamento entre as letras */
+    letter-spacing: 1px;
+
+    /* leve sombra no texto */
+    text-shadow: 0 2px 12px rgba(255, 255, 255, 0.15);
+}
+
+
+.subtitle {
+
+    /* centraliza o subtítulo */
+    text-align: center;
+
+    /* espaço abaixo */
+    margin-bottom: 30px;
+
+    /* cor do texto em cinza claro */
+    color: var(--gray-400);
+
+    /* tamanho do texto */
+    font-size: 15px;
+
+    /* espaçamento entre as letras */
+    letter-spacing: 0.5px;
+}
+
+
+.tenis-area {
+
+    /* fundo da área da imagem em degradê claro */
+    background: linear-gradient(145deg, var(--gray-100), var(--gray-200));
+
+    /* borda sutil */
+    border: 1px solid var(--gray-600);
+
+    /* cantos arredondados */
+    border-radius: 18px;
+
+    /* espaço interno */
+    padding: 20px;
+
+    /* espaço abaixo da área */
+    margin-bottom: 24px;
+
+    /* altura FIXA: a área não muda de tamanho entre uma foto e outra */
+    height: 340px;
+
+    /* ativa Flexbox */
+    display: flex;
+
+    /* centraliza horizontalmente */
+    justify-content: center;
+
+    /* centraliza verticalmente */
+    align-items: center;
+
+    /* necessário para posicionar elementos absolutos dentro */
+    position: relative;
+
+    /* corta o que passar dos cantos arredondados */
+    overflow: hidden;
+
+    /* sombra interna para dar profundidade */
+    box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+#tenisImage,
+.tenis-area img {
+
+    /* TAMANHO FIXO: toda foto aparece exatamente neste tamanho */
+    width: 100%px;
+    height: 510px;
+
+    /* impede a imagem de ser esticada ou encolhida pelo flex */
+    flex: none;
+
+    /* a foto preenche o quadrado todo, sem faixas e sem distorcer */
+    object-fit: contain;
+
+    /* borda arredondada */
+    border-radius: 12px;
+
+    /* muda o cursor para indicar clique */
+    cursor: pointer;
+
+    /* animação suave ao passar o mouse */
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+
+#tenisImage:hover {
+
+    /* aumenta levemente a imagem */
+    transform: scale(1.02);
+
+    /* deixa a imagem um pouco mais viva */
+    filter: brightness(1.05);
+}
+
+
+#breedName {
+
+    /* posicionamento absoluto dentro da .tenis-area */
+    position: absolute;
+
+    /* distância da parte inferior */
+    bottom: 20px;
+
+    /* distância da esquerda */
+    left: 20px;
+
+    /* fundo preto semi-transparente */
+    background: rgba(10, 10, 10, 0.75);
+
+    /* desfoca o que está atrás do rótulo */
+    backdrop-filter: blur(8px);
+
+    /* borda fina clara */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    /* cor do texto */
+    color: var(--white);
+
+    /* espaço interno */
+    padding: 7px 16px;
+
+    /* formato arredondado */
+    border-radius: 20px;
+
+    /* texto levemente destacado */
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+
+/*
+.container dos botões
+.controls e .search compartilham o mesmo estilo
+*/
+.controls,
+.search {
+
+    /* ativa flexbox */
+    display: flex;
+
+    /* espaço entre elementos */
+    gap: 12px;
+
+    /* espaço abaixo */
+    margin-bottom: 16px;
+}
+
+
+button {
+
+    /* faz todos os botões ocuparem o mesmo espaço */
+    flex: 1;
+
+    /* altura e espaço interno */
+    padding: 13px;
+
+    /* borda fina em cinza */
+    border: 1px solid var(--gray-600);
+
+    /* borda arredondada */
+    border-radius: 10px;
+
+    /* cor de fundo */
+    background: var(--gray-800);
+
+    /* cor do texto */
+    color: var(--white);
+
+    /* deixa o texto mais grosso */
+    font-weight: bold;
+
+    /* tamanho do texto */
+    font-size: 14px;
+
+    /* cursor de botão */
+    cursor: pointer;
+
+    /* animação suave nas mudanças */
+    transition: background 0.25s ease, color 0.25s ease,
+                transform 0.15s ease, box-shadow 0.25s ease;
+}
+
+
+button:hover {
+
+    /* inverte as cores: fundo branco, texto preto */
+    background: var(--white);
+    color: var(--black);
+
+    /* sobe o botão um pouquinho */
+    transform: translateY(-2px);
+
+    /* brilho suave */
+    box-shadow: 0 6px 18px rgba(255, 255, 255, 0.18);
+}
+
+
+button:active {
+
+    /* efeito de clique: volta para a posição original */
+    transform: translateY(0);
+
+    /* sombra menor */
+    box-shadow: none;
+}
+
+
+input {
+
+    /* ocupa mais espaço que o botão */
+    flex: 2;
+
+    /* espaço interno */
+    padding: 13px 16px;
+
+    /* borda arredondada */
+    border-radius: 10px;
+
+    /* borda cinza */
+    border: 2px solid var(--gray-800);
+
+    /* fundo escuro */
+    background: var(--black-soft);
+
+    /* cor do texto digitado */
+    color: var(--white);
+
+    /* tamanho da fonte */
+    font-size: 16px;
+
+    /* remove o contorno padrão do navegador */
+    outline: none;
+
+    /* animação suave ao focar */
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+
+input::placeholder {
+
+    /* cor do texto de exemplo */
+    color: var(--gray-400);
+}
+
+
+input:focus {
+
+    /* borda branca quando o campo está selecionado */
+    border-color: var(--white);
+
+    /* brilho suave ao redor */
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+}
+
+
+/* classe usada quando a API está carregando */
+.loading {
+
+    /* deixa a área um pouco transparente */
+    opacity: 0.6;
+
+    /* bloqueia cliques durante o carregamento */
+    pointer-events: none;
+}
+
+
+/* cria um pseudo-elemento depois do elemento */
+.loading::after {
+
+    /* texto exibido */
+    content: "Carregando...";
+
+    /* posicionamento absoluto, centralizado na .tenis-area */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    /* fundo preto */
+    background: var(--black);
+
+    /* cor do texto */
+    color: var(--white);
+
+    /* borda fina clara */
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    /* espaço interno */
+    padding: 10px 22px;
+
+    /* borda arredondada */
+    border-radius: 20px;
+
+    /* texto levemente destacado */
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+
+/* ajuste para telas pequenas (celular) */
+@media (max-width: 600px) {
+
+    .container {
+
+        /* menos espaço interno no celular */
+        padding: 22px;
+    }
+
+    .controls,
+    .search {
+
+        /* empilha os botões e o campo de busca */
+        flex-direction: column;
+    }
+
+    .tenis-area {
+
+        /* área da imagem um pouco menor */
+        height: 280px;
+    }
+
+    #tenisImage,
+    .tenis-area img {
+
+        /* foto menor no celular, mas sempre do mesmo tamanho */
+        width: 240px;
+        height: 240px;
+    }
+}

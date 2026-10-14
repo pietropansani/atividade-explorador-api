@@ -1,0 +1,6 @@
+{
+    "air_force":   ["air_force/1.jpg",   "air_force/2.jpg",   "air_force/3.jpg"],
+    "new_balance": ["new_balance/1.jpg", "new_balance/2.jpg", "new_balance/3.jpg"],
+    "asics":       ["asics/1.jpg",       "asics/2.jpg",       "asics/3.jpg"],
+    "lv":          ["lv/1.jpg",          "lv/2.jpg",          "lv/3.jpg"]
+}
